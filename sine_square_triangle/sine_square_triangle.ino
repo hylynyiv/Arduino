@@ -1,5 +1,5 @@
 const int speakerPin = 9;
-const int numSamples = 100;
+const int numSamples = 256;
 int sineData[numSamples];
 
 void beep(int pin, int frequency, int duration) {
@@ -32,7 +32,7 @@ void loop() {
   while(millis() - startMillis < 3000) {
     for (int i = 0; i < numSamples; i++) {
       analogWrite(speakerPin, sineData[i]);
-      delayMicroseconds(50);
+      delayMicroseconds(100);
     }
   }
 
@@ -40,9 +40,9 @@ void loop() {
   startMillis = millis();
   while(millis() - startMillis < 3000) {
     analogWrite(speakerPin, 255);
-    delayMicroseconds(1000);
+    delayMicroseconds(100);
     analogWrite(speakerPin, 0);
-    delayMicroseconds(1000);
+    delayMicroseconds(100);
   }
 
   // Dreieckston für 3 Sekunden
